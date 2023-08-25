@@ -1,0 +1,14 @@
+org: vats147
+app: pdf-crops-serverless
+service: pdf-crops-serverless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: '*'
