@@ -260,10 +260,10 @@ console.log("=================================================");
 
 });
   // Start the server
-  const port = process.env.PORT || 3000;
-  app.listen(port, () => {
-        console.log(`Server listening on port ${port}`);
-  });
+  // const port = process.env.PORT || 3000;
+  // app.listen(port, () => {
+  //       console.log(`Server listening on port ${port}`);
+  // });
 // }  //else block
 
 app.get("/path", (req, res, next) => {
@@ -278,4 +278,4 @@ app.get("/path", (req, res, next) => {
 //   });
 // });
 
-// module.exports.handler = serverless(app);
+module.exports.handler = serverless(app);
