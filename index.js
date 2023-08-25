@@ -10,7 +10,7 @@ const cors = require('cors');
 const os = require('os');
 const cluster = require('cluster');
 const { default: e } = require('express');
-
+const path = require('path');
 
 
 // count total number of cpu
@@ -21,6 +21,8 @@ var date = new Date();
 
 const app = express();
 var check=0;
+
+
 
 app.use(cors({
   origin: '*',
@@ -265,6 +267,18 @@ console.log("=================================================");
   //       console.log(`Server listening on port ${port}`);
   // });
 // }  //else block
+
+app.get('/listFiles', (req, res) => {
+  const currentFolderPath = __dirname; // Current folder
+  const rootFolderPath = path.dirname(__dirname); // Root folder
+
+  const currentFiles = fs.readdirSync(currentFolderPath);
+  const rootFiles = fs.readdirSync(rootFolderPath);
+
+  const allFiles = currentFiles.concat(rootFiles);
+
+  res.json({ files: allFiles });
+});
 
 app.get("/path", (req, res, next) => {
   return res.status(200).json({
