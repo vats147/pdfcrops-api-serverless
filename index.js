@@ -10,8 +10,7 @@ const cors = require('cors');
 const os = require('os');
 const cluster = require('cluster');
 const { default: e } = require('express');
-const path = require('path');
-
+const path = require('path')
 
 // count total number of cpu
 const cpuNums = os.cpus().length;
@@ -36,7 +35,7 @@ var fname;
 // Set up multer to handle file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-         cb(null, './tmp/');
+         cb(null, '/tmp');
   },
   filename: (req, file, cb) => {
     check++;
@@ -104,7 +103,7 @@ console.log("=================================================");
            // console.log();
            // Save the output PDF file
            fs.writeFileSync(outputPath, await pdfDoc.save());
-           fs.unlink( './tmp/'+fname, (err) => {
+           fs.unlink( '/tmp'+fname, (err) => {
                   if (err) {
                    
                     console.error(err);
@@ -205,7 +204,7 @@ console.log("=================================================");
      if(req.body.Ecommerce==2)
     {
 
-    cropPDF('./tmp/' + fname,'outputfiledownload.pdf', 170, 467, 255, 353)
+    cropPDF('/tmp' + fname,'outputfiledownload.pdf', 170, 467, 255, 353)
            .then(() => {
                   console.log("PDF is cropped");
                   // PDF has been cropped
@@ -221,7 +220,7 @@ console.log("=================================================");
     else if(req.body.Ecommerce==3)
     {
           
-           cropPDF('./tmp/' + fname,'outputfiledownload.pdf',  0, 490, 600, 600)
+           cropPDF('/tmp' + fname,'outputfiledownload.pdf',  0, 490, 600, 600)
            .then(() => {
                   console.log("Meesho is cropped");
                   // PDF has been cropped
@@ -237,7 +236,7 @@ console.log("=================================================");
      else if(req.body.Ecommerce==4)
     {
           
-           cropPDF('./tmp/' + fname,'outputfiledownload.pdf', 25, 220, 545, 300)
+           cropPDF('/tmp' + fname,'outputfiledownload.pdf', 25, 220, 545, 300)
            .then(() => {
                   console.log("GlowRoad is cropped");
                   // PDF has been cropped
